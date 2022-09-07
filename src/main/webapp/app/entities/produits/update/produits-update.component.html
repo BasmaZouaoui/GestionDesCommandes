@@ -1,0 +1,91 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-produits-heading"
+        data-cy="ProduitsCreateUpdateHeading"
+        jhiTranslate="gestionDesCommandesApp.produits.home.createOrEditLabel"
+      >
+        Créer ou éditer un Produits
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gestionDesCommandesApp.produits.numeroproduit" for="field_numeroproduit"
+            >Numeroproduit</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numeroproduit"
+            id="field_numeroproduit"
+            data-cy="numeroproduit"
+            formControlName="numeroproduit"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gestionDesCommandesApp.produits.nomproduit" for="field_nomproduit">Nomproduit</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nomproduit"
+            id="field_nomproduit"
+            data-cy="nomproduit"
+            formControlName="nomproduit"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gestionDesCommandesApp.produits.quantite" for="field_quantite">Quantite</label>
+          <input type="number" class="form-control" name="quantite" id="field_quantite" data-cy="quantite" formControlName="quantite" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gestionDesCommandesApp.produits.prix" for="field_prix">Prix</label>
+          <input type="number" class="form-control" name="prix" id="field_prix" data-cy="prix" formControlName="prix" />
+        </div>
+
+        <div class="row mb-3">
+          <label jhiTranslate="gestionDesCommandesApp.produits.commande" for="field_commandes">Commande</label>
+          <select
+            class="form-control"
+            id="field_commandes"
+            data-cy="commande"
+            multiple
+            name="commandes"
+            formControlName="commandes"
+            [compareWith]="compareCommande"
+          >
+            <option [ngValue]="commandeOption" *ngFor="let commandeOption of commandesSharedCollection">
+              {{ commandeOption.numerocommande }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

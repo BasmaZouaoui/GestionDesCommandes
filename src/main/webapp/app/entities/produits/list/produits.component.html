@@ -1,0 +1,101 @@
+<div>
+  <h2 id="page-heading" data-cy="ProduitsHeading">
+    <span jhiTranslate="gestionDesCommandesApp.produits.home.title">Produits</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gestionDesCommandesApp.produits.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-produits"
+        [routerLink]="['/produits/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gestionDesCommandesApp.produits.home.createLabel"> Créer un nouveau Produits </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="produits?.length === 0">
+    <span jhiTranslate="gestionDesCommandesApp.produits.home.notFound">Aucun Produits trouvé</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="produits && produits.length > 0">
+    <table class="table table-dark" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="numeroproduit">
+            <span jhiTranslate="gestionDesCommandesApp.produits.numeroproduit">Numeroproduit</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="nomproduit">
+            <span jhiTranslate="gestionDesCommandesApp.produits.nomproduit">Nomproduit</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="quantite">
+            <span jhiTranslate="gestionDesCommandesApp.produits.quantite">Quantite</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="prix">
+            <span jhiTranslate="gestionDesCommandesApp.produits.prix">Prix</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="commande.numerocommande">
+            <span jhiTranslate="gestionDesCommandesApp.produits.commande">Commande</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let produits of produits; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/produits', produits.id, 'view']">{{ produits.id }}</a>
+          </td>
+          <td>{{ produits.numeroproduit }}</td>
+          <td>{{ produits.nomproduit }}</td>
+          <td>{{ produits.quantite }}</td>
+          <td>{{ produits.prix }}</td>
+          <td>
+            <span *ngFor="let commande of produits.commandes; let last = last">
+              <a class="form-control-static" [routerLink]="['/commande', commande.id, 'view']">{{ commande.numerocommande }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/produits', produits.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/produits', produits.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </button>
+
+              <button type="submit" (click)="delete(produits)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

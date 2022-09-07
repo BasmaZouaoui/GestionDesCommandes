@@ -1,0 +1,28 @@
+{
+  "gestionDesCommandesApp": {
+    "produits": {
+      "home": {
+        "title": "Produits",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Produits",
+        "createOrEditLabel": "Créer ou éditer un Produits",
+        "notFound": "Aucun Produits trouvé"
+      },
+      "created": "Un nouveau Produits a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Produits avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Produits avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Produits {{ id }} ?"
+      },
+      "detail": {
+        "title": "Produits"
+      },
+      "id": "ID",
+      "numeroproduit": "Numeroproduit",
+      "nomproduit": "Nomproduit",
+      "quantite": "Quantite",
+      "prix": "Prix",
+      "commande": "Commande"
+    }
+  }
+}

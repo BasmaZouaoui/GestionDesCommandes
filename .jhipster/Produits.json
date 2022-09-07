@@ -1,0 +1,35 @@
+{
+  "changelogDate": "20220906222025",
+  "fields": [
+    {
+      "fieldName": "numeroproduit",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nomproduit",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "quantite",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "prix",
+      "fieldType": "Double"
+    }
+  ],
+  "name": "Produits",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "numerocommande",
+      "otherEntityName": "commande",
+      "otherEntityRelationshipName": "produits",
+      "ownerSide": true,
+      "relationshipName": "commande",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}

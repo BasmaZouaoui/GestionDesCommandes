@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-livraison-heading"
+        data-cy="LivraisonCreateUpdateHeading"
+        jhiTranslate="gestionDesCommandesApp.livraison.home.createOrEditLabel"
+      >
+        Créer ou éditer un Livraison
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gestionDesCommandesApp.livraison.numerolivraison" for="field_numerolivraison"
+            >Numerolivraison</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numerolivraison"
+            id="field_numerolivraison"
+            data-cy="numerolivraison"
+            formControlName="numerolivraison"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gestionDesCommandesApp.livraison.datelivraison" for="field_datelivraison"
+            >Datelivraison</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_datelivraison"
+              data-cy="datelivraison"
+              type="datetime-local"
+              class="form-control"
+              name="datelivraison"
+              formControlName="datelivraison"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gestionDesCommandesApp.livraison.commande" for="field_commande">Commande</label>
+          <select
+            class="form-control"
+            id="field_commande"
+            data-cy="commande"
+            name="commande"
+            formControlName="commande"
+            [compareWith]="compareCommande"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="commandeOption" *ngFor="let commandeOption of commandesSharedCollection">
+              {{ commandeOption.numerocommande }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

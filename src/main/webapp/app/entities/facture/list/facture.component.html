@@ -1,0 +1,96 @@
+<div>
+  <h2 id="page-heading" data-cy="FactureHeading">
+    <span jhiTranslate="gestionDesCommandesApp.facture.home.title">Factures</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="gestionDesCommandesApp.facture.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-facture"
+        [routerLink]="['/facture/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="gestionDesCommandesApp.facture.home.createLabel"> Créer un nouveau Facture </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="factures?.length === 0">
+    <span jhiTranslate="gestionDesCommandesApp.facture.home.notFound">Aucun Facture trouvé</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="factures && factures.length > 0">
+    <table class="table table-dark" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="numerofacture">
+            <span jhiTranslate="gestionDesCommandesApp.facture.numerofacture">Numerofacture</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="datefacture">
+            <span jhiTranslate="gestionDesCommandesApp.facture.datefacture">Datefacture</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="montant">
+            <span jhiTranslate="gestionDesCommandesApp.facture.montant">Montant</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col" jhiSortBy="commande.numerocommande">
+            <span jhiTranslate="gestionDesCommandesApp.facture.commande">Commande</span> <fa-icon icon="sort"></fa-icon>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let facture of factures; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/facture', facture.id, 'view']">{{ facture.id }}</a>
+          </td>
+          <td>{{ facture.numerofacture }}</td>
+          <td>{{ facture.datefacture | formatMediumDatetime }}</td>
+          <td>{{ facture.montant }}</td>
+          <td>
+            <div *ngIf="facture.commande">
+              <a [routerLink]="['/commande', facture.commande.id, 'view']">{{ facture.commande?.numerocommande }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/facture', facture.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/facture', facture.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+              </button>
+
+              <button type="submit" (click)="delete(facture)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

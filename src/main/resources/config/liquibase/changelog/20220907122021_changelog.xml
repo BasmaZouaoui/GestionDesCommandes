@@ -1,0 +1,66 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.12.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-1">
+        <dropForeignKeyConstraint baseTableName="JHI_USER_AUTHORITY" constraintName="FK_AUTHORITY_NAME"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-2">
+        <dropForeignKeyConstraint baseTableName="COMMANDE" constraintName="FK_COMMANDE__CLIENT_ID"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-3">
+        <dropForeignKeyConstraint baseTableName="FACTURE" constraintName="FK_FACTURE__COMMANDE_ID"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-4">
+        <dropForeignKeyConstraint baseTableName="LIVRAISON" constraintName="FK_LIVRAISON__COMMANDE_ID"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-5">
+        <dropForeignKeyConstraint baseTableName="REL_COMMANDE__PRODUITS" constraintName="FK_REL_COMMANDE__PRODUITS__COMMANDE_ID"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-6">
+        <dropForeignKeyConstraint baseTableName="REL_COMMANDE__PRODUITS" constraintName="FK_REL_COMMANDE__PRODUITS__PRODUITS_ID"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-7">
+        <dropForeignKeyConstraint baseTableName="REL_PRODUITS__COMMANDE" constraintName="FK_REL_PRODUITS__COMMANDE__COMMANDE_ID"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-8">
+        <dropForeignKeyConstraint baseTableName="REL_PRODUITS__COMMANDE" constraintName="FK_REL_PRODUITS__COMMANDE__PRODUITS_ID"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-9">
+        <dropForeignKeyConstraint baseTableName="JHI_USER_AUTHORITY" constraintName="FK_USER_ID"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-10">
+        <dropUniqueConstraint constraintName="UX_USER_EMAIL" tableName="JHI_USER"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-11">
+        <dropUniqueConstraint constraintName="UX_USER_LOGIN" tableName="JHI_USER"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-12">
+        <dropTable tableName="CLIENT"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-13">
+        <dropTable tableName="COMMANDE"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-14">
+        <dropTable tableName="FACTURE"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-15">
+        <dropTable tableName="JHI_AUTHORITY"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-16">
+        <dropTable tableName="JHI_USER"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-17">
+        <dropTable tableName="JHI_USER_AUTHORITY"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-18">
+        <dropTable tableName="LIVRAISON"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-19">
+        <dropTable tableName="PRODUITS"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-20">
+        <dropTable tableName="REL_COMMANDE__PRODUITS"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662553247161-21">
+        <dropTable tableName="REL_PRODUITS__COMMANDE"/>
+    </changeSet>
+</databaseChangeLog>

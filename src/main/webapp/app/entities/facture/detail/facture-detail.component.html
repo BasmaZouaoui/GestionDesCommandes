@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="facture">
+      <h2 data-cy="factureDetailsHeading"><span jhiTranslate="gestionDesCommandesApp.facture.detail.title">Facture</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ facture.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionDesCommandesApp.facture.numerofacture">Numerofacture</span></dt>
+        <dd>
+          <span>{{ facture.numerofacture }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionDesCommandesApp.facture.datefacture">Datefacture</span></dt>
+        <dd>
+          <span>{{ facture.datefacture | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionDesCommandesApp.facture.montant">Montant</span></dt>
+        <dd>
+          <span>{{ facture.montant }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionDesCommandesApp.facture.commande">Commande</span></dt>
+        <dd>
+          <div *ngIf="facture.commande">
+            <a [routerLink]="['/commande', facture.commande.id, 'view']">{{ facture.commande?.numerocommande }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/facture', facture.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

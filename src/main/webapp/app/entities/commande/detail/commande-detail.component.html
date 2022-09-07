@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="commande">
+      <h2 data-cy="commandeDetailsHeading"><span jhiTranslate="gestionDesCommandesApp.commande.detail.title">Commande</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ commande.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionDesCommandesApp.commande.numerocommande">Numerocommande</span></dt>
+        <dd>
+          <span>{{ commande.numerocommande }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionDesCommandesApp.commande.datecommande">Datecommande</span></dt>
+        <dd>
+          <span>{{ commande.datecommande | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="gestionDesCommandesApp.commande.client">Client</span></dt>
+        <dd>
+          <div *ngIf="commande.client">
+            <a [routerLink]="['/client', commande.client.id, 'view']">{{ commande.client?.numeroclient }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+      </button>
+
+      <button type="button" [routerLink]="['/commande', commande.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+      </button>
+    </div>
+  </div>
+</div>

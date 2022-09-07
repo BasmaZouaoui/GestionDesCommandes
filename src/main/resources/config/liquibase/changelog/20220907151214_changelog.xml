@@ -1,0 +1,27 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.12.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="basma_zouaoui (generated)" id="1662563550222-3">
+        <dropForeignKeyConstraint baseTableName="REL_COMMANDE__PRODUITS" constraintName="FK_REL_COMMANDE__PRODUITS__COMMANDE_ID"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662563550222-4">
+        <dropForeignKeyConstraint baseTableName="REL_COMMANDE__PRODUITS" constraintName="FK_REL_COMMANDE__PRODUITS__PRODUITS_ID"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662563550222-5">
+        <dropForeignKeyConstraint baseTableName="REL_PRODUITS__COMMANDE" constraintName="FK_REL_PRODUITS__COMMANDE__COMMANDE_ID"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662563550222-6">
+        <dropForeignKeyConstraint baseTableName="REL_PRODUITS__COMMANDE" constraintName="FK_REL_PRODUITS__COMMANDE__PRODUITS_ID"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662563550222-7">
+        <dropTable tableName="REL_COMMANDE__PRODUITS"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662563550222-8">
+        <dropTable tableName="REL_PRODUITS__COMMANDE"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662563550222-1">
+        <dropUniqueConstraint constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+    <changeSet author="basma_zouaoui (generated)" id="1662563550222-2">
+        <addUniqueConstraint columnNames="login" constraintName="UC_JHI_USERLOGIN_COL" tableName="jhi_user"/>
+    </changeSet>
+</databaseChangeLog>

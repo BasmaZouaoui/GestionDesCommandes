@@ -1,0 +1,30 @@
+<style type="text/css">
+  p{
+    font-size: 25px;
+  }
+</style>
+<div class="row">
+  <div class="col-md-3">
+    <span class="hipster img-fluid rounded"></span>
+  </div>
+
+  <div class="col-md-9">
+    <h1 class="display-4">Bienvenue! Gestion Des Commandes</h1>
+
+    <p>Cette application vous permet de gérer les commandes de vos clients, leurs factures, les livraisons....</p>
+
+    <div [ngSwitch]="account !== null">
+      <div class="alert alert-success" *ngSwitchCase="true">
+        <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message" [translateValues]="{ username: account.login }"
+          >Vous êtes connecté en tant que "{{ account.login }}".</span
+        >
+      </div>
+
+      <div class="alert alert-warning" *ngSwitchCase="false">
+        <span>Cliquez </span>
+        <a class="alert-link" (click)="login()"><em>ICI </em></a
+        ><span> pour se connecter <br /></span>
+      </div>
+    </div>   
+  </div>
+</div>

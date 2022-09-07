@@ -1,0 +1,29 @@
+{
+  "changelogDate": "20220906222247",
+  "fields": [
+    {
+      "fieldName": "numerofacture",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "datefacture",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "montant",
+      "fieldType": "Double"
+    }
+  ],
+  "name": "Facture",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "numerocommande",
+      "otherEntityName": "commande",
+      "relationshipName": "commande",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

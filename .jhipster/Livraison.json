@@ -1,0 +1,25 @@
+{
+  "changelogDate": "20220906222452",
+  "fields": [
+    {
+      "fieldName": "numerolivraison",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "datelivraison",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "Livraison",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "numerocommande",
+      "otherEntityName": "commande",
+      "relationshipName": "commande",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

@@ -1,0 +1,89 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-facture-heading"
+        data-cy="FactureCreateUpdateHeading"
+        jhiTranslate="gestionDesCommandesApp.facture.home.createOrEditLabel"
+      >
+        Créer ou éditer un Facture
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gestionDesCommandesApp.facture.numerofacture" for="field_numerofacture"
+            >Numerofacture</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="numerofacture"
+            id="field_numerofacture"
+            data-cy="numerofacture"
+            formControlName="numerofacture"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gestionDesCommandesApp.facture.datefacture" for="field_datefacture">Datefacture</label>
+          <div class="d-flex">
+            <input
+              id="field_datefacture"
+              data-cy="datefacture"
+              type="datetime-local"
+              class="form-control"
+              name="datefacture"
+              formControlName="datefacture"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gestionDesCommandesApp.facture.montant" for="field_montant">Montant</label>
+          <input type="number" class="form-control" name="montant" id="field_montant" data-cy="montant" formControlName="montant" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="gestionDesCommandesApp.facture.commande" for="field_commande">Commande</label>
+          <select
+            class="form-control"
+            id="field_commande"
+            data-cy="commande"
+            name="commande"
+            formControlName="commande"
+            [compareWith]="compareCommande"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="commandeOption" *ngFor="let commandeOption of commandesSharedCollection">
+              {{ commandeOption.numerocommande }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

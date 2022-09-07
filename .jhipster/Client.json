@@ -1,0 +1,37 @@
+{
+  "changelogDate": "20220906221045",
+  "fields": [
+    {
+      "fieldName": "numeroclient",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "nom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prenom",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "adresse",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telephone",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Client",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "commande",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "commande",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

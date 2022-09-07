@@ -1,0 +1,44 @@
+{
+  "changelogDate": "20220906221749",
+  "fields": [
+    {
+      "fieldName": "numerocommande",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "datecommande",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "Commande",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "numeroclient",
+      "otherEntityName": "client",
+      "relationshipName": "client",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "facture",
+      "otherEntityRelationshipName": "commande",
+      "relationshipName": "facture",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "livraison",
+      "otherEntityRelationshipName": "commande",
+      "relationshipName": "livraison",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "produits",
+      "otherEntityRelationshipName": "commande",
+      "ownerSide": false,
+      "relationshipName": "produits",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "no"
+}
